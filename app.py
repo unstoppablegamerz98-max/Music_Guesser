@@ -40,6 +40,15 @@ elif page=="Single Clip":
     if up:
         audio, sr = load_audio(up)
 
+        for noise in range(0, 101, 10):
+    noisy = audio + np.random.randn(len(audio)) * (noise/100) * np.std(audio)
+
+    pred, conf, _ = identify(
+        hashes(peaks(spectrogram(noisy)))
+    )
+
+    print(f"Noise={noise}% -> {pred}, votes={conf}")
+
         if noise > 0:
             audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
             audio = audio / np.max(np.abs(audio))  # optional normalization
