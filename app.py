@@ -37,8 +37,12 @@ elif page=="Single Clip":
     up=st.file_uploader("Upload query clip",type=["wav","mp3"])
     noise = st.slider("Add synthetic noise (%)", 0, 100, 0)
 
-    if noise > 0:
-        audio = audio+np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
+    if up:
+        audio, sr = load_audio(up)
+
+        if noise > 0:
+            audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
+            audio = audio / np.max(np.abs(audio))  # optional normalization
 
    
         S=spectrogram(audio)
