@@ -1,4 +1,4 @@
-
+A
 import streamlit as st, pickle, pandas as pd, numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
@@ -36,7 +36,7 @@ if page=="Database Stats":
 
 elif page=="Single Clip":
     up=st.file_uploader("Upload query clip",type=["wav","mp3"])
-    noise=st.slider("Add synthetic noise (%)",0,50,0)
+    noise=st.slider("Add synthetic noise (%)",0,100,0)
     if up:
         audio,sr=load_audio(up)
         if noise>0:
