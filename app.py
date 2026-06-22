@@ -41,7 +41,7 @@ elif page=="Single Clip":
         audio, sr = load_audio(up)
 
         if noise > 0:
-            audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
+            audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)*5
             audio = audio / np.max(np.abs(audio))  # optional normalization
 
    
