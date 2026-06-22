@@ -67,8 +67,8 @@ if page == "Single Clip":
         step=5
     )
 
-    st.subheader("Noise Analysis")
-    st.progress(noise)
+    
+   
     st.metric("Noise Level", f"{noise}%")
 
     if up:
