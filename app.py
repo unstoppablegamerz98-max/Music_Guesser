@@ -28,14 +28,14 @@ def identify(hs):
 
 st.title("EE200 Sonic Signatures Identifier")
 
-page=st.sidebar.radio("Mode",["Single Clip","Batch Mode","Database Stats"])
+page=st.sidebar.radio("Mode",["Single Clip","Batch Mode"])
 
 if page=="Database Stats":
     st.metric("Unique Hashes", len(DB))
 
 elif page=="Single Clip":
     up=st.file_uploader("Upload query clip",type=["wav","mp3"])
-    noise = st.sidebar.slider("Add synthetic noise (%)", 0, 100, 0)
+    noise = st.slider("Add synthetic noise (%)", 0, 100, 0)
 
     if up:
         audio, sr = load_audio(up)
