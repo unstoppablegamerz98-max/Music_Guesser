@@ -38,7 +38,7 @@ elif page=="Single Clip":
     noise = st.slider("Add synthetic noise (%)", 0, 100, 0)
 
     if noise > 0:
-    audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
+        audio = audio + np.random.randn(len(audio)) * (noise / 100) * np.std(audio)
 
    
         S=spectrogram(audio)
