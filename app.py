@@ -35,7 +35,7 @@ if page=="Database Stats":
 
 elif page=="Single Clip":
     up=st.file_uploader("Upload query clip",type=["wav","mp3"])
-    noise = st.slidebar.slider("Add synthetic noise (%)", 0, 100, 0)
+    noise = st.sidebar.slider("Add synthetic noise (%)", 0, 100, 0)
 
     if up:
         audio, sr = load_audio(up)
