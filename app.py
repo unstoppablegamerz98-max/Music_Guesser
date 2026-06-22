@@ -35,12 +35,14 @@ if page=="Database Stats":
 
 elif page=="Single Clip":
     up=st.file_uploader("Upload query clip",type=["wav","mp3"])
-    noise=st.slider("Add synthetic noise (%)",0,100,0)
-    if up:
-        audio,sr=load_audio(up)
-        if noise>0:
-            audio=audio+np.random.randn(len(audio))*noise/100*np.std(audio)
+   noise = st.slider("Add synthetic noise (%)", 0, 100, 0)
 
+if noise > 0:
+    noise_signal = np.random.randn(len(audio))
+    audio = audio + (noise / 100) * np.std(audio) * noise_signal
+    audio = audio / np.max(np.abs(audio))
+
+st.write(f"Current Noise Level: {noise}%")
         S=spectrogram(audio)
         P=peaks(S)
         H=hashes(P)
